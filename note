@@ -1,0 +1,25 @@
+1.assign
++ Dùng ngoài always block
++tạo continous block (gán liên tục)
++chỉ dùng cho wire(verilog) hay logic(systemverilog)
++luôn chạy song song:bất cứ khi nào vế phải thay đổi , vế trái cũng thay đổi
+Example:
+wire c;
+assign c = a &b;
+
+2.= (block assign)
++Dùng trong always block(hoặc initial)
++Blocking nghĩa là lệnh phải hoàn thành mới thực hiện lệnh tiếp theo(giống code C)
++Chỉ dùng cho mạch combinational
+
+always_comb begin
+    y = a & b;
+end
+3. <= (non-blocking assign)
++Dùng trong alway_ff hoặc always@(posedge clk)
++Non-blocking nghĩa là tất cả trong block ghi nhớ giá trị rồi cập nhật lúc ở cuối kì
++Dùng để mô tả mạch tuần tự(sequential circuit - flipflop,register)- > tránh lỗi race condition
+
+always_ff(posedge clk) begin
+q <= d;
+end 
