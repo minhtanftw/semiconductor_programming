@@ -23,3 +23,24 @@ end
 always_ff(posedge clk) begin
 q <= d;
 end 
+
+always_comb dùng để mô tả mạch combinational
+
+always_comb begin
+y = a & b;
+end
+
+giống với always@(*) trong verilog truyền thống
+Tự động hiểu mọi tín hiệu trong block là tín hiệu sensitive list
+ví dụ:
+module mux2to1(input logic a,b,sel,
+                output logic y);
+    always_comb begin
+    if (sel)
+    y = a;
+    else
+    y= b;
+    end
+endmodule 
+
+always_comb dam bao y luon duoc cap nhat gia tri khi a,b,sel thay doi.
