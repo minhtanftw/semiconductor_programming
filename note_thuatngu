@@ -44,3 +44,12 @@ module mux2to1(input logic a,b,sel,
 endmodule 
 
 always_comb dam bao y luon duoc cap nhat gia tri khi a,b,sel thay doi.
+
+
+
+
+
+
+
+
+#tai sao 
