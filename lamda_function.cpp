@@ -1,34 +1,32 @@
-#include <iostream>
 #include <vector>
+#include <algorithm>
+#include <iostream>
 
 using namespace std;
 
-void print(vector<int> vec) {
-    for ( auto v: vec ){
-        cout << v << "";
-    }
-}
 int main() {
-    vector<int> v1,v2;
-    auto byRef = [&] (int m ) {
-        v1.push_back(m);
-        v2.push_back(m*m);
-    };
-    auto byVal = [&]  (int m) {
-        v1.push_back(m);
-        v2.push_back(m*m);
+    vector <int> vec = {10 -23, 30, -40, 50, -60};
 
-    };
-    auto mixed = [&v1, &v2] (int m){
-        v1.push_back(m);
-        v2.push_back(m*m);
-
-    };
-    byRef(2);
-    byVal(3);
-    mixed(4);
-    print(v1);
-    print(v2);
-    return 0;
+    cout << "Original vector before applying lamda function: ";
+    for (auto i: vec) {
+        cout << i << " ";
+    }
+    cout << endl;
+    //capture vector by reference
+    // clause
+    auto lamda = [&vec] (){
+        cout << "vector values inside lamda function: ";
+        for (auto &i: vec) {
+            i  *= 100;
+            cout << i << " ";
     
+        }
+        cout << endl;
+    };
+    lamda();
+    cout << "Vector after applying lamda function: ";
+    for (auto i: vec) {
+        cout << i << " ";
+    }
+
 }

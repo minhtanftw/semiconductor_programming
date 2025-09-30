@@ -1,0 +1,28 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.LOGIC_UNSIGNED.ALL;
+
+entity ram3port is 
+    generic (N : integer := 6;
+             M : integer := 8);
+    port (clk,
+          we3: in STD_LOGIC;
+          a1,a2, a3: in STD_LOGIC_VECTOR(N -1 downto 0);
+            d3: in STD_LOGIC_VECTOR(M -1 downto 0));
+end;
+
+architecture synth of ram3port is
+type mem_array is array((2**N -1 )downto 0) of STD_LOGIC_VECTOR(M -1 downto 0);
+signal mem: mem_array;
+begin
+     process(clk) begin
+    if clk 'event and clk = '1' then
+        if we3 = '1' then
+        mem(conv_integer(a30)) <= d3;
+        end if;
+    end if;
+    end process;
+d1 <= mem(conv_integer(a1));
+d2 <= mem(conv_integer(a2));
+end;
+            
